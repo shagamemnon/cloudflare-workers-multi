@@ -1,0 +1,27 @@
+# wrangler.toml
+name = "edge-worker-app"
+type = "webpack"
+account_id = "12345678901234567890"
+zone_id = "a80680e21565818508120"
+vars = { ENVIRONMENT = "primary" }
+
+[env.sub_app_1]
+name = "sub_app_1"
+webpack_config = "webpack.sub_app_1.js"
+vars = { ENVIRONMENT = "custom1" }
+route = "www.cfiq.io/static/path/*"
+
+[env.sub_app_2]
+name = "sub_app_2"
+webpack_config = "webpack.sub_app_2.js"
+vars = { ENVIRONMENT = "custom2" }
+route = "secure.cfiq.io/some/other/path/*"
+
+[env.sub_app_2]
+name = "sub_app_3"
+webpack_config = "webpack.sub_app_3.js"
+vars = { ENVIRONMENT = "custom3" }
+routes = [
+  "www.cfiq.io/login/*",
+  "auth.cfiq.io/*"
+]
